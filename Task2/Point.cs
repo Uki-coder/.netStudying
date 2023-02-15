@@ -22,11 +22,9 @@
 
         public Point()
         {
-            Random rd = new Random();
-            XCoordinate = (double)rd.Next(-100, 100);
-            YCoordinate = (double)rd.Next(-100, 100);
+            XCoordinate = 0;
+            YCoordinate = 0;
         }
-
         public override bool Equals(object? obj)
         {
             return obj is Point dot &&
