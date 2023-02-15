@@ -2,7 +2,7 @@
 
 namespace Task2
 {
-    internal class Circle
+    internal class Circle : Figure
     {
         public Point Center { get; private set; }
         public double Radius { get; private set; }
@@ -11,30 +11,33 @@ namespace Task2
         {
             Center = other.Center;
             Radius = other.Radius;
+            Area = other.Area;
         }
 
         public Circle(Point center, double radius) 
         {
             Center = center;
             Radius = radius;
+            Area = Math.PI * Radius * Radius;
         }
 
         public Circle(Point center, Point point)
         {
             Center = center;
             Radius = Center.Distance(point);
+            Area = Math.PI * Radius * Area;
         }
 
         public Circle()
         {
-            Random rd = new Random();
-            Radius = (double)rd.Next(-100, 100);
             Center = new Point();
+            Radius = 0.0;
+            Area = 0.0;
         }
 
         public double GetArea()
         {
-            return Math.PI * Radius * Radius;
+            return Area;
         }
 
         public override bool Equals(object? obj)

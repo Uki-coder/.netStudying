@@ -2,7 +2,7 @@
 
 namespace Task2
 {
-    internal class Triangle
+    internal class Triangle : Figure
     {
         public Point Apex1 { get; private set; }
         public Point Apex2 { get; private set; }
@@ -13,6 +13,12 @@ namespace Task2
             Apex1 = apex1;
             Apex2 = apex2;
             Apex3 = apex3;
+
+            double halfPer = (Apex1.Distance(Apex2) + Apex2.Distance(Apex3) + Apex3.Distance(Apex1)) / 2.0;
+            Area = Math.Sqrt(halfPer *
+                (halfPer - Apex1.Distance(Apex2)) *
+                (halfPer - Apex2.Distance(Apex3)) *
+                (halfPer - Apex3.Distance(Apex1)));
         }
 
         public Triangle(Triangle other)
@@ -20,13 +26,7 @@ namespace Task2
             Apex1 = other.Apex1;
             Apex2 = other.Apex2;
             Apex3 = other.Apex3;
-        }
-
-        public Triangle()
-        {
-            Apex1= new Point();
-            Apex2= new Point();
-            Apex3= new Point();
+            Area = other.Area;
         }
 
         public override bool Equals(object? obj)
@@ -39,11 +39,7 @@ namespace Task2
 
         public double GetArea()
         {
-            double halfPer = (Apex1.Distance(Apex2) + Apex2.Distance(Apex3) + Apex3.Distance(Apex1)) / 2.0;
-            return Math.Sqrt(halfPer * 
-                (halfPer - Apex1.Distance(Apex2)) *
-                (halfPer - Apex2.Distance(Apex3)) *
-                (halfPer - Apex3.Distance(Apex1)));
+            return Area;
         }
     }
 }
