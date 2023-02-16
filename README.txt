@@ -1,1 +1,3 @@
 Studying .NET
+All tasks and branches are going in next order:
+Task1 -> Task2 -> Task3 -> ...
