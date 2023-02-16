@@ -1,6 +1,4 @@
-﻿using Task2;
-
-namespace Task2
+﻿namespace Task
 {
     internal class Triangle : Figure
     {
@@ -13,6 +11,7 @@ namespace Task2
             Apex1 = apex1;
             Apex2 = apex2;
             Apex3 = apex3;
+            Name = "triangle";
 
             double halfPer = (Apex1.Distance(Apex2) + Apex2.Distance(Apex3) + Apex3.Distance(Apex1)) / 2.0;
             Area = Math.Sqrt(halfPer *
@@ -27,6 +26,7 @@ namespace Task2
             Apex2 = other.Apex2;
             Apex3 = other.Apex3;
             Area = other.Area;
+            Name = other.Name;
         }
 
         public override bool Equals(object? obj)

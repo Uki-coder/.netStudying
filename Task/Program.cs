@@ -1,7 +1,7 @@
-﻿using Task2;
+﻿using Task;
 
 List<Point> points = new List<Point>();
-FigureGenerator fRnd = new FigureGenerator(); //figure randomazer
+FigureGenerator fRnd = new FigureGenerator(); //figure randomazer object
 Random rnd = new Random();
 
 const int POINT_AMOUNT = 10;
@@ -45,26 +45,14 @@ for (int i = 0; i < FIGURE_AMOUNT; i++)
     figures.Add(new Rectangle(fRnd.GenerateRectangle()));
 }
 
-/*for (int i = 0; i < FIGURE_TYPES * FIGURE_AMOUNT; i++)
-{
-    
-}*/
-
 for (int i = 0; i < FIGURE_TYPES * FIGURE_AMOUNT; i++)
 {
     areas.Add(figures[i].GetArea());
-    if (figures[i] is Circle) Console.WriteLine($"Circle {i} has area: {areas[i]}");
-    else if (figures[i] is Triangle) Console.WriteLine($"Triangle {i} has area: {areas[i]}");
-    else Console.WriteLine($"Rectangle {i} has area: {areas[i]}");
+    Console.WriteLine($"{figures[i].Name} {i} has area: {areas[i]}");
 }
 
 int maximumID = areas.IndexOf(areas.Max());
 int minimumID = areas.IndexOf(areas.Min());
 
-if (figures[maximumID] is Circle) Console.WriteLine($"\n\nCircle {maximumID} has maximum area: {areas[maximumID]}");
-else if (figures[maximumID] is Triangle) Console.WriteLine($"\n\nTriangle {maximumID} has maximum area: {areas[maximumID]}");
-else Console.WriteLine($"\n\nRectangle {maximumID} has maximum area: {areas[maximumID]}");
-
-if (figures[minimumID] is Circle) Console.WriteLine($"Circle {minimumID} has minimum area: {areas[minimumID]}");
-else if (figures[minimumID] is Triangle) Console.WriteLine($"Triangle {minimumID} has minimum area: {areas[minimumID]}");
-else Console.WriteLine($"Rectangle {minimumID} has minimum area: {areas[minimumID]}");
+Console.WriteLine($"\n\n{figures[maximumID].Name} {maximumID} has maximum area: {areas[maximumID]}");
+Console.WriteLine($"{figures[minimumID].Name} {minimumID} has minimum area: {areas[minimumID]}");

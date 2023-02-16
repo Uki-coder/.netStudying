@@ -1,8 +1,8 @@
-﻿namespace Task2
+﻿namespace Task
 {
     internal class FigureGenerator
     {
-        
+
         private Random generator;
 
         public FigureGenerator()
@@ -34,7 +34,7 @@
 
         public Circle GenerateCircle()
         {
-            return new Circle(GeneratePoint(), (double)generator.Next(-100,100));
+            return new Circle(GeneratePoint(), (double)generator.Next(-100, 100));
 
         }
 
@@ -44,3 +44,4 @@
         }
     }
 }
+

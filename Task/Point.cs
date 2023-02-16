@@ -1,4 +1,4 @@
-﻿namespace Task2
+﻿namespace Task
 {
     internal class Point
     {
@@ -30,7 +30,7 @@
             return obj is Point dot &&
                    Math.Abs(XCoordinate - dot.XCoordinate) <= Double.Epsilon &&
                    Math.Abs(YCoordinate - dot.YCoordinate) <= Double.Epsilon;
-                   //Math.Abs(ZCoordinate - dot.ZCoordinate) <= Double.Epsilon;
+            //Math.Abs(ZCoordinate - dot.ZCoordinate) <= Double.Epsilon;
         }
 
         public double Distance(Point other)

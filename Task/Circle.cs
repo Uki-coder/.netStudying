@@ -1,6 +1,5 @@
-﻿using Task2;
-
-namespace Task2
+﻿
+namespace Task
 {
     internal class Circle : Figure
     {
@@ -12,13 +11,15 @@ namespace Task2
             Center = other.Center;
             Radius = other.Radius;
             Area = other.Area;
+            Name = other.Name;
         }
 
-        public Circle(Point center, double radius) 
+        public Circle(Point center, double radius)
         {
             Center = center;
             Radius = radius;
             Area = Math.PI * Radius * Radius;
+            Name = "circle";
         }
 
         public Circle(Point center, Point point)
@@ -26,13 +27,7 @@ namespace Task2
             Center = center;
             Radius = Center.Distance(point);
             Area = Math.PI * Radius * Area;
-        }
-
-        public Circle()
-        {
-            Center = new Point();
-            Radius = 0.0;
-            Area = 0.0;
+            Name = "circle";
         }
 
         public double GetArea()
