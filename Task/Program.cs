@@ -1,4 +1,4 @@
-﻿using Task1;
+﻿using Task;
 
 const int POINTS_AMOUNT = 10;
 List<Point> points = new List<Point>();
