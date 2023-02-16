@@ -1,4 +1,6 @@
-﻿namespace Task2
+﻿using System.Diagnostics;
+
+namespace Task2
 {
     internal class Rectangle : Figure
     {
@@ -7,6 +9,12 @@
 
         public Rectangle(Point leftPoint, Point rightPoint)
         {
+            if (!(leftPoint.XCoordinate < rightPoint.XCoordinate && leftPoint.YCoordinate < rightPoint.YCoordinate))
+            {
+                Console.WriteLine("Exception: wrong arguments leftPoint, RightPoints for Rectangle");
+                Process.GetCurrentProcess().Kill();
+            }
+
             LeftPoint = leftPoint;
             RightPoint = rightPoint;
             Area = Math.Abs(
