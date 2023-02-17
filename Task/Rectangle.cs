@@ -7,8 +7,9 @@ namespace Task
         public Point LeftPoint { get; private set; }
         public Point RightPoint { get; private set; }
 
-        public Rectangle(Point leftPoint, Point rightPoint)
+        public Rectangle(Point leftPoint, Point rightPoint, string color, int border, int fill)
         {
+            CheckColor(color);
             if (!(leftPoint.XCoordinate < rightPoint.XCoordinate && leftPoint.YCoordinate < rightPoint.YCoordinate))
             {
                 Console.WriteLine("Exception: wrong arguments leftPoint, RightPoints for Rectangle");
@@ -18,6 +19,9 @@ namespace Task
             LeftPoint = leftPoint;
             RightPoint = rightPoint;
             Name = "rectangle";
+            Color = color;
+            Border = (BorderPatterns)border;
+            Fill = (FillPatterns)fill;
             Area = Math.Abs(
                 (LeftPoint.XCoordinate - RightPoint.XCoordinate) *
                 (LeftPoint.YCoordinate - RightPoint.YCoordinate));
@@ -29,6 +33,9 @@ namespace Task
             RightPoint = other.RightPoint;
             Area = other.Area;
             Name = other.Name;
+            Color = other.Color;
+            Fill = other.Fill;
+            Border = other.Border;
         }
 
         public double GetArea()
