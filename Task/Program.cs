@@ -48,7 +48,7 @@ for (int i = 0; i < FIGURE_AMOUNT; i++)
 for (int i = 0; i < FIGURE_TYPES * FIGURE_AMOUNT; i++)
 {
     areas.Add(figures[i].GetArea());
-    Console.WriteLine($"{figures[i].Name} {i} has area: {areas[i]} {figures[i].Color}");
+    Console.WriteLine($"{figures[i].Name} {i} has area: {areas[i]}");
 }
 
 int maximumID = areas.IndexOf(areas.Max());
