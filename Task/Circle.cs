@@ -14,37 +14,31 @@ namespace Task
             Radius = other.Radius;
             Area = other.Area;
             Name = other.Name;
-            Color = other.Color;
-            Border = other.Border;
-            Fill = other.Fill;
+            FigureBorder = other.FigureBorder;
+            FigureFill = other.FigureFill;
         }
 
-        public Circle(Point center, double radius, string color, int border, int fill)
+        public Circle(Point center, double radius, Border border, Fill fill)
         {
-            CheckColor(color);
             Center = center;
             Radius = radius;
-            Area = Math.PI * Radius * Radius;
             Name = "circle";
-            Color = color;
-            Border = (BorderPatterns)border;
-            Fill = (FillPatterns)fill;
+            FigureBorder = border;
+            FigureFill = fill;
         }
 
-        public Circle(Point center, Point point, string color, int border, int fill)
-        {
-            CheckColor(color);
+        public Circle(Point center, Point point, Border border, Fill fill)
+        { 
             Center = center;
             Radius = Center.Distance(point);
-            Area = Math.PI * Radius * Area;
             Name = "circle";
-            Color = color;
-            Border = (BorderPatterns)border;
-            Fill = (FillPatterns)fill;
+            FigureBorder = border;
+            FigureFill = fill;
         }
 
-        public double GetArea()
+        public override double GetArea()
         {
+            Area = Math.PI * Radius * Radius;
             return Area;
         }
 
@@ -53,6 +47,14 @@ namespace Task
             return obj is Circle circle &&
                    Center.Equals(circle.Center) &&
                    Math.Abs(Radius - circle.Radius) <= Double.Epsilon;
+        }
+
+        public override string ToString()
+        {
+            return Name + ":\nArea: " + GetArea()
+                        + "\nCenter Coordinates: " + Center.XCoordinate + ' ' + Center.YCoordinate
+                        + "\nRadius: " + Radius
+                        + '\n';
         }
     }
 }

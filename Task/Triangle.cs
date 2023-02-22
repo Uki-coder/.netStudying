@@ -8,23 +8,14 @@ namespace Task
         public Point Apex2 { get; private set; }
         public Point Apex3 { get; private set; }
 
-        public Triangle(Point apex1, Point apex2, Point apex3, string color, int border, int fill)
+        public Triangle(Point apex1, Point apex2, Point apex3, Border border, Fill fill)
         {
-            CheckColor(color);
             Apex1 = apex1;
             Apex2 = apex2;
             Apex3 = apex3;
             Name = "triangle";
-            Color = color;
-
-            double halfPer = (Apex1.Distance(Apex2) + Apex2.Distance(Apex3) + Apex3.Distance(Apex1)) / 2.0;
-            Area = Math.Sqrt(halfPer *
-                (halfPer - Apex1.Distance(Apex2)) *
-                (halfPer - Apex2.Distance(Apex3)) *
-                (halfPer - Apex3.Distance(Apex1)));
-            Color = color;
-            Border = (BorderPatterns)border;
-            Fill = (FillPatterns)fill;
+            FigureFill = fill;
+            FigureBorder = border;
         }
 
         public Triangle(Triangle other)
@@ -32,11 +23,9 @@ namespace Task
             Apex1 = other.Apex1;
             Apex2 = other.Apex2;
             Apex3 = other.Apex3;
-            Area = other.Area;
             Name = other.Name;
-            Color = other.Color;
-            Border = other.Border;
-            Fill = other.Fill;
+            FigureBorder = other.FigureBorder;
+            FigureFill = other.FigureFill;
         }
 
         public override bool Equals(object? obj)
@@ -47,9 +36,24 @@ namespace Task
                    Apex3.Equals(triangle.Apex3);
         }
 
-        public double GetArea()
+        public override double GetArea()
         {
+            double halfPer = (Apex1.Distance(Apex2) + Apex2.Distance(Apex3) + Apex3.Distance(Apex1)) / 2.0;
+            Area = Math.Sqrt(halfPer *
+                (halfPer - Apex1.Distance(Apex2)) *
+                (halfPer - Apex2.Distance(Apex3)) *
+                (halfPer - Apex3.Distance(Apex1)));
             return Area;
+        }
+
+        public override string ToString()
+        {
+            return Name + ":\nArea: " + GetArea()
+                        + "\nApex1: " + Apex1.XCoordinate + ' ' + Apex1.YCoordinate
+                        + "\nApex2: " + Apex2.XCoordinate + ' ' + Apex2.YCoordinate
+                        + "\nApex3: " + Apex3.XCoordinate + ' ' + Apex3.YCoordinate
+                        + '\n';
+
         }
     }
 }

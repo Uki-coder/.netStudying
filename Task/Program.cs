@@ -6,13 +6,13 @@ Random rnd = new Random();
 
 const int POINT_AMOUNT = 10;
 
-Console.WriteLine("Dots' coordinates:\n");
+Console.WriteLine("Points' coordinates:\n");
 
 for (int i = 0; i < POINT_AMOUNT; i++)
 {
     Point p = fRnd.GeneratePoint();
     points.Add(p);
-    Console.WriteLine($"Point {i}: {points[i].XCoordinate}, {points[i].YCoordinate}");
+    Console.WriteLine($"{i} {points[i]}");
 }
 
 List<double> distances = new List<double>();
@@ -48,11 +48,11 @@ for (int i = 0; i < FIGURE_AMOUNT; i++)
 for (int i = 0; i < FIGURE_TYPES * FIGURE_AMOUNT; i++)
 {
     areas.Add(figures[i].GetArea());
-    Console.WriteLine($"{figures[i].Name} {i} has area: {areas[i]}");
+    Console.WriteLine($"{i} {figures[i]}");
 }
 
 int maximumID = areas.IndexOf(areas.Max());
 int minimumID = areas.IndexOf(areas.Min());
 
-Console.WriteLine($"\n\n{figures[maximumID].Name} {maximumID} has maximum area: {areas[maximumID]}");
-Console.WriteLine($"{figures[minimumID].Name} {minimumID} has minimum area: {areas[minimumID]}");
+Console.WriteLine($"\n\nFigure with maximum area -- {maximumID} {figures[maximumID]}");
+Console.WriteLine($"Figure with minimum area -- {minimumID} {figures[minimumID]}");

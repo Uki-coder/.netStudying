@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Runtime.Intrinsics.X86;
 
 namespace Task
 {
@@ -7,47 +8,45 @@ namespace Task
         public Point LeftPoint { get; private set; }
         public Point RightPoint { get; private set; }
 
-        public Rectangle(Point leftPoint, Point rightPoint, string color, int border, int fill)
+        public Rectangle(Point leftPoint, Point rightPoint, Border border, Fill fill)
         {
-            CheckColor(color);
-            if (!(leftPoint.XCoordinate < rightPoint.XCoordinate && leftPoint.YCoordinate < rightPoint.YCoordinate))
-            {
-                Console.WriteLine("Exception: wrong arguments leftPoint, RightPoints for Rectangle");
-                Process.GetCurrentProcess().Kill();
-            }
-
             LeftPoint = leftPoint;
             RightPoint = rightPoint;
             Name = "rectangle";
-            Color = color;
-            Border = (BorderPatterns)border;
-            Fill = (FillPatterns)fill;
-            Area = Math.Abs(
-                (LeftPoint.XCoordinate - RightPoint.XCoordinate) *
-                (LeftPoint.YCoordinate - RightPoint.YCoordinate));
+            FigureBorder = border;
+            FigureFill = fill;
         }
 
         public Rectangle(Rectangle other)
         {
             LeftPoint = other.LeftPoint;
             RightPoint = other.RightPoint;
-            Area = other.Area;
             Name = other.Name;
-            Color = other.Color;
-            Fill = other.Fill;
-            Border = other.Border;
+            FigureFill = other.FigureFill;
+            FigureBorder = other.FigureBorder;
         }
 
-        public double GetArea()
+        public override double GetArea()
         {
+            Area = Math.Abs(
+                (LeftPoint.XCoordinate - RightPoint.XCoordinate) *
+                (LeftPoint.YCoordinate - RightPoint.YCoordinate));
             return Area;
         }
 
-        public override bool Equals(object? obj)
+        public override bool Equals(object? obj) //ask: equality of fill & border
         {
             return obj is Rectangle rectangle &&
                    LeftPoint.Equals(rectangle.LeftPoint) &&
                    RightPoint.Equals(rectangle.RightPoint);
+        }
+
+        public override string ToString()
+        {
+            return Name + ":\nArea: " + GetArea()
+                        + "\nLeft point: " + LeftPoint.XCoordinate + ' ' + LeftPoint.YCoordinate
+                        + "\nRight Point: " + RightPoint.XCoordinate + ' ' + RightPoint.YCoordinate
+                        + '\n';
         }
     }
 }
