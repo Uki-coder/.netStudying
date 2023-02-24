@@ -1,6 +1,6 @@
 ﻿namespace Task
 {
-    internal class Point
+    internal class Point : IMovable
     {
         public double XCoordinate { get; private set; }
         public double YCoordinate { get; private set; }
@@ -42,6 +42,28 @@
         public override string ToString()
         {
             return "Point: " + XCoordinate + ' ' + YCoordinate + '\n';
+        }
+
+        public void MoveTo(Point destination)
+        {
+            XCoordinate = destination.XCoordinate;
+            YCoordinate = destination.YCoordinate;
+        }
+
+        public void Move(double x, double y)
+        {
+            XCoordinate += x;
+            YCoordinate += y;
+        }
+
+        public void MoveHorizontally(double x)
+        {
+            XCoordinate += x;
+        }
+
+        public void MoveVertically(double y)
+        {
+            YCoordinate += y;
         }
     }
 }

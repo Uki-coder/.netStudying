@@ -1,7 +1,4 @@
-﻿using System.Diagnostics;
-using System.Runtime.Intrinsics.X86;
-
-namespace Task
+﻿namespace Task
 {
     internal class Rectangle : Figure
     {
@@ -47,6 +44,30 @@ namespace Task
                         + "\nLeft point: " + LeftPoint.XCoordinate + ' ' + LeftPoint.YCoordinate
                         + "\nRight Point: " + RightPoint.XCoordinate + ' ' + RightPoint.YCoordinate
                         + '\n';
+        }
+
+        public override void Move(double x, double y)
+        {
+            LeftPoint.Move(x, y);
+            RightPoint.Move(x, y);
+        }
+
+        public override void MoveTo(Point destination)
+        {
+            RightPoint.Move(destination.XCoordinate, destination.YCoordinate);
+            LeftPoint.MoveTo(destination);
+        }
+
+        public override void MoveHorizontally(double x)
+        {
+            RightPoint.MoveHorizontally(x);
+            LeftPoint.MoveHorizontally(x);
+        }
+
+        public override void MoveVertically(double y)
+        {
+            RightPoint.MoveVertically(y);
+            LeftPoint.MoveVertically(y);
         }
     }
 }

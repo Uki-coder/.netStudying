@@ -1,6 +1,6 @@
 ﻿namespace Task
 {
-    internal abstract class Figure
+    internal abstract class Figure : IMovable
     {
        
         public double Area { get; protected set; }
@@ -19,5 +19,9 @@
 
         public abstract double GetArea();
         public abstract override string ToString();
+        public abstract void MoveTo(Point destination);
+        public abstract void Move(double x, double y);
+        public abstract void MoveVertically(double y);
+        public abstract void MoveHorizontally(double x);
     }
 }

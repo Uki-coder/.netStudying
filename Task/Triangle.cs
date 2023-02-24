@@ -1,15 +1,14 @@
-﻿using System.Drawing;
-
-namespace Task
+﻿namespace Task
 {
     internal class Triangle : Figure
     {
-        public Point Apex1 { get; private set; }
-        public Point Apex2 { get; private set; }
-        public Point Apex3 { get; private set; }
+        public Point Apex1 { get; protected set; }
+        public Point Apex2 { get; protected set; }
+        public Point Apex3 { get; protected set; }
 
         public Triangle(Point apex1, Point apex2, Point apex3, Border border, Fill fill)
         {
+            
             Apex1 = apex1;
             Apex2 = apex2;
             Apex3 = apex3;
@@ -54,6 +53,34 @@ namespace Task
                         + "\nApex3: " + Apex3.XCoordinate + ' ' + Apex3.YCoordinate
                         + '\n';
 
+        }
+
+        public override void Move(double x, double y)
+        {
+            Apex1.Move(x, y);
+            Apex2.Move(x, y);
+            Apex3.Move(x, y);
+        }
+
+        public override void MoveTo(Point destination)
+        {
+            Apex3.Move(destination.XCoordinate, destination.YCoordinate);
+            Apex2.Move(destination.XCoordinate, destination.YCoordinate);
+            Apex1.MoveTo(destination);
+        }
+
+        public override void MoveHorizontally(double x)
+        {
+            Apex1.MoveHorizontally(x);
+            Apex2.MoveHorizontally(x);
+            Apex3.MoveHorizontally(x);
+        }
+
+        public override void MoveVertically(double y)
+        {
+            Apex1.MoveVertically(y);
+            Apex2.MoveVertically(y);
+            Apex3.MoveVertically(y);
         }
     }
 }

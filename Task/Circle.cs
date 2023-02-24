@@ -56,5 +56,25 @@ namespace Task
                         + "\nRadius: " + Radius
                         + '\n';
         }
+
+        public override void Move(double x, double y)
+        {
+            Center.Move(x, y);
+        }
+
+        public override void MoveTo(Point destination)
+        {
+            Center.MoveTo(destination);
+        }
+
+        public override void MoveVertically(double y)
+        {
+            Center.MoveVertically(y);
+        }
+
+        public override void MoveHorizontally(double x)
+        {
+            Center.MoveHorizontally(x);
+        }
     }
 }
