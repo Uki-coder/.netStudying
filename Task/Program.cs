@@ -1,4 +1,6 @@
-﻿using Task;
+﻿using Task.FigureBuilders;
+using Task.Figures;
+using Task.Figures.Triangle;
 
 List<Point> points = new List<Point>();
 FigureGenerator fRnd = new FigureGenerator(); //figure randomazer object
@@ -41,7 +43,11 @@ const int FIGURE_TYPES = 3;
 for (int i = 0; i < FIGURE_AMOUNT; i++)
 {
     figures.Add(new Circle(fRnd.GenerateCircle()));
-    figures.Add(new Triangle(fRnd.GenerateTriangle()));
+
+    Triangle addTr = new Triangle();
+    addTr = fRnd.GenerateTriangle();
+    figures.Add(addTr);
+
     figures.Add(new Rectangle(fRnd.GenerateRectangle()));
 }
 

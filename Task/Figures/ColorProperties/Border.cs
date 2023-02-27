@@ -1,4 +1,4 @@
-﻿namespace Task
+﻿namespace Task.Figures.ColorProperties
 {
     internal class Border
     {

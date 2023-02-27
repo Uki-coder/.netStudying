@@ -1,4 +1,6 @@
-﻿namespace Task
+﻿using Task.Interfaces;
+
+namespace Task.Figures
 {
     internal class Point : IMovable
     {
@@ -25,8 +27,8 @@
         public override bool Equals(object? obj)
         {
             return obj is Point dot &&
-                   Math.Abs(XCoordinate - dot.XCoordinate) <= Double.Epsilon &&
-                   Math.Abs(YCoordinate - dot.YCoordinate) <= Double.Epsilon;
+                   Math.Abs(XCoordinate - dot.XCoordinate) <= double.Epsilon &&
+                   Math.Abs(YCoordinate - dot.YCoordinate) <= double.Epsilon;
         }
 
         public double Distance(Point other)
@@ -35,8 +37,8 @@
             double yDistance = YCoordinate - other.YCoordinate;
 
             return Math.Sqrt(
-                (xDistance * xDistance) +
-                (yDistance * yDistance));
+                xDistance * xDistance +
+                yDistance * yDistance);
         }
 
         public override string ToString()

@@ -1,4 +1,8 @@
-﻿namespace Task
+﻿using Task.Figures;
+using Task.Figures.ColorProperties;
+using Task.Figures.Triangle;
+
+namespace Task.FigureBuilders
 {
     internal class FigureGenerator
     {
@@ -6,10 +10,12 @@
         private const int FILL_STATEMENTS = 6;
         private const int BORDER_STATEMENTS = 4;
         private Random Generator;
+        private TriangleBuilder TrBuilder;
 
         public FigureGenerator()
         {
             Generator = new Random();
+            TrBuilder = new TriangleBuilder();
         }
 
         public Point GeneratePoint()
@@ -25,7 +31,7 @@
                 while (true)
                 {
                     int hexSym = Generator.Next(48, 70); //ask: neccessity of constants
-                    if(!(hexSym >= 58 && hexSym <= 64)) //ask: neccessity of constants
+                    if (!(hexSym >= 58 && hexSym <= 64)) //ask: neccessity of constants
                     {
                         color += (char)hexSym;
                         break;
@@ -70,7 +76,23 @@
 
         public Triangle GenerateTriangle()
         {
-            return new Triangle(GeneratePoint(), GeneratePoint(), GeneratePoint(), GenerateBorder(), GenerateFill()); //ask: how get amount of statements
+            Point apex1 = new Point(GeneratePoint());
+            Point apex2 = new Point(GeneratePoint());
+            Point apex3 = new Point(GeneratePoint());
+            double LinearKoeff, OrdinateKoeff;
+
+            while (true)
+            {
+                LinearKoeff = (apex1.YCoordinate - apex2.YCoordinate) / (apex1.XCoordinate - apex2.XCoordinate);
+                OrdinateKoeff = apex1.YCoordinate - LinearKoeff * apex1.XCoordinate;
+
+                if (!(LinearKoeff * apex3.XCoordinate + OrdinateKoeff - apex3.YCoordinate <= double.Epsilon)) break;
+                apex1 = GeneratePoint();
+                apex2 = GeneratePoint();
+                apex3 = GeneratePoint();
+            }
+
+            return TrBuilder.Build(apex1, apex2, apex3, GenerateBorder(), GenerateFill());
         }
     }
 }

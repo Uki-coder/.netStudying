@@ -1,4 +1,6 @@
-﻿namespace Task
+﻿using Task.Figures;
+
+namespace Task.Interfaces
 {
     internal interface IMovable
     {

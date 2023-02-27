@@ -1,8 +1,11 @@
-﻿namespace Task
+﻿using Task.Figures.ColorProperties;
+using Task.Interfaces;
+
+namespace Task.Figures
 {
     internal abstract class Figure : IMovable
     {
-       
+
         public double Area { get; protected set; }
         public string Name { get; protected set; } //Type of figure: Circle, Recctangle, Triangle //ask: enum to string
         public Border FigureBorder { get; protected set; }

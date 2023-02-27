@@ -1,8 +1,10 @@
-﻿namespace Task
+﻿using Task.Figures.ColorProperties;
+
+namespace Task.Figures.Triangle
 {
     internal class EqualiteralTriangle : Triangle
     {
-        public EqualiteralTriangle(Point apex1, Point apex2, Point apex3, Border border, Fill fill) : base(apex1, apex2, apex3, border, fill)
+        public EqualiteralTriangle(Point apex1, Point apex2, Point apex3, Border border, Fill fill)
         {
             Apex1 = apex1;
             Apex2 = apex2;

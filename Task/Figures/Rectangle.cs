@@ -1,4 +1,6 @@
-﻿namespace Task
+﻿using Task.Figures.ColorProperties;
+
+namespace Task.Figures
 {
     internal class Rectangle : Figure
     {

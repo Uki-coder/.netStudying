@@ -1,4 +1,6 @@
-﻿namespace Task
+﻿using Task.Figures.ColorProperties;
+
+namespace Task.Figures.Triangle
 {
     internal class Triangle : Figure
     {
@@ -6,25 +8,16 @@
         public Point Apex2 { get; protected set; }
         public Point Apex3 { get; protected set; }
 
-        public Triangle(Point apex1, Point apex2, Point apex3, Border border, Fill fill)
+        public Triangle()
         {
-            
-            Apex1 = apex1;
-            Apex2 = apex2;
-            Apex3 = apex3;
-            Name = "triangle";
-            FigureFill = fill;
-            FigureBorder = border;
-        }
 
-        public Triangle(Triangle other)
-        {
-            Apex1 = other.Apex1;
-            Apex2 = other.Apex2;
-            Apex3 = other.Apex3;
-            Name = other.Name;
-            FigureBorder = other.FigureBorder;
-            FigureFill = other.FigureFill;
+            Apex1 = new Point();
+            Apex2 = new Point();
+            Apex3 = new Point();
+            Name = "triangle";
+            FigureFill = new Fill(new Color(string.Empty, 0), 0);
+            FigureBorder = new Border(new Color(string.Empty, 0), 0);
+            Area = 0;
         }
 
         public override bool Equals(object? obj)
@@ -37,11 +30,6 @@
 
         public override double GetArea()
         {
-            double halfPer = (Apex1.Distance(Apex2) + Apex2.Distance(Apex3) + Apex3.Distance(Apex1)) / 2.0;
-            Area = Math.Sqrt(halfPer *
-                (halfPer - Apex1.Distance(Apex2)) *
-                (halfPer - Apex2.Distance(Apex3)) *
-                (halfPer - Apex3.Distance(Apex1)));
             return Area;
         }
 

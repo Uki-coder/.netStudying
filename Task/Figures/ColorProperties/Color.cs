@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Task
+namespace Task.Figures.ColorProperties
 {
     internal class Color
     {

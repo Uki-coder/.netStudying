@@ -1,7 +1,8 @@
 ﻿
 using System.Drawing;
+using Task.Figures.ColorProperties;
 
-namespace Task
+namespace Task.Figures
 {
     internal class Circle : Figure
     {
@@ -28,7 +29,7 @@ namespace Task
         }
 
         public Circle(Point center, Point point, Border border, Fill fill)
-        { 
+        {
             Center = center;
             Radius = Center.Distance(point);
             Name = "circle";
@@ -46,7 +47,7 @@ namespace Task
         {
             return obj is Circle circle &&
                    Center.Equals(circle.Center) &&
-                   Math.Abs(Radius - circle.Radius) <= Double.Epsilon;
+                   Math.Abs(Radius - circle.Radius) <= double.Epsilon;
         }
 
         public override string ToString()
