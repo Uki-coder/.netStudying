@@ -2,7 +2,7 @@
 
 namespace Task.Figures.Triangle
 {
-    internal class Triangle : Figure
+    internal abstract class  Triangle : Figure
     {
         public Point Apex1 { get; protected set; }
         public Point Apex2 { get; protected set; }
@@ -28,10 +28,7 @@ namespace Task.Figures.Triangle
                    Apex3.Equals(triangle.Apex3);
         }
 
-        public override double GetArea()
-        {
-            return Area;
-        }
+        public abstract override double GetArea();
 
         public override string ToString()
         {

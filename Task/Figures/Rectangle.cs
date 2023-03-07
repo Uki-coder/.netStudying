@@ -33,7 +33,7 @@ namespace Task.Figures
             return Area;
         }
 
-        public override bool Equals(object? obj) //ask: equality of fill & border
+        public override bool Equals(object? obj)
         {
             return obj is Rectangle rectangle &&
                    LeftPoint.Equals(rectangle.LeftPoint) &&

@@ -10,12 +10,10 @@ namespace Task.FigureBuilders
         private const int FILL_STATEMENTS = 6;
         private const int BORDER_STATEMENTS = 4;
         private Random Generator;
-        private TriangleBuilder TrBuilder;
 
         public FigureGenerator()
         {
             Generator = new Random();
-            TrBuilder = new TriangleBuilder();
         }
 
         public Point GeneratePoint()
@@ -30,8 +28,8 @@ namespace Task.FigureBuilders
             {
                 while (true)
                 {
-                    int hexSym = Generator.Next(48, 70); //ask: neccessity of constants
-                    if (!(hexSym >= 58 && hexSym <= 64)) //ask: neccessity of constants
+                    int hexSym = Generator.Next(48, 70);
+                    if (!(hexSym >= 58 && hexSym <= 64))
                     {
                         color += (char)hexSym;
                         break;
@@ -65,12 +63,12 @@ namespace Task.FigureBuilders
                 leftPoint = GeneratePoint();
                 rightPoint = GeneratePoint();
             }
-            return new Rectangle(leftPoint, rightPoint, GenerateBorder(), GenerateFill()); //ask: how get amount of statements
+            return new Rectangle(leftPoint, rightPoint, GenerateBorder(), GenerateFill());
         }
 
         public Circle GenerateCircle()
         {
-            return new Circle(GeneratePoint(), Generator.Next(0, 100), GenerateBorder(), GenerateFill()); //ask: how get amount of statements
+            return new Circle(GeneratePoint(), Generator.Next(0, 100), GenerateBorder(), GenerateFill());
 
         }
 
@@ -86,13 +84,14 @@ namespace Task.FigureBuilders
                 LinearKoeff = (apex1.YCoordinate - apex2.YCoordinate) / (apex1.XCoordinate - apex2.XCoordinate);
                 OrdinateKoeff = apex1.YCoordinate - LinearKoeff * apex1.XCoordinate;
 
-                if (!(LinearKoeff * apex3.XCoordinate + OrdinateKoeff - apex3.YCoordinate <= double.Epsilon)) break;
+                if (!(Math.Abs(LinearKoeff * apex3.XCoordinate + OrdinateKoeff - apex3.YCoordinate) <= double.Epsilon) &&
+                    !apex1.Equals(apex2) && !apex2.Equals(apex3) && !apex3.Equals(apex1)) break;
                 apex1 = GeneratePoint();
                 apex2 = GeneratePoint();
                 apex3 = GeneratePoint();
             }
 
-            return TrBuilder.Build(apex1, apex2, apex3, GenerateBorder(), GenerateFill());
+            return TriangleBuilder.Build(apex1, apex2, apex3, GenerateBorder(), GenerateFill());
         }
     }
 }

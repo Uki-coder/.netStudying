@@ -42,13 +42,9 @@ const int FIGURE_TYPES = 3;
 
 for (int i = 0; i < FIGURE_AMOUNT; i++)
 {
-    figures.Add(new Circle(fRnd.GenerateCircle()));
-
-    Triangle addTr = new Triangle();
-    addTr = fRnd.GenerateTriangle();
-    figures.Add(addTr);
-
-    figures.Add(new Rectangle(fRnd.GenerateRectangle()));
+    figures.Add(fRnd.GenerateCircle());
+    figures.Add(fRnd.GenerateTriangle());
+    figures.Add(fRnd.GenerateRectangle());
 }
 
 for (int i = 0; i < FIGURE_TYPES * FIGURE_AMOUNT; i++)
