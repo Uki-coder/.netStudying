@@ -5,7 +5,7 @@ using Task.FigureBuilders;
 
 internal class ArbitraryTriangleBuilder : TriangleBuilder
 {
-	public ArbitraryTriangleBuilder()
+    public ArbitraryTriangleBuilder()
 	{
         
     }

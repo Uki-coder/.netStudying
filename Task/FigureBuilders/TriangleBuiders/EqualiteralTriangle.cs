@@ -5,9 +5,9 @@ using Task.FigureBuilders;
 
 internal class EqualiteralTriangleBuilder : TriangleBuilder
 {
-	public EqualiteralTriangleBuilder()
+    public EqualiteralTriangleBuilder(TriangleBuilder nextBuilder) : base(nextBuilder)
 	{
-    
+        NextBuilder = nextBuilder;
     }
 
     public override Triangle Build(Point apex1, Point apex2, Point apex3, Border border, Fill fill)
@@ -22,9 +22,6 @@ internal class EqualiteralTriangleBuilder : TriangleBuilder
             return new EqualiteralTriangle(apex1, apex2, apex3, border, fill);
         }
 
-        else
-        {
-            return IscoscelesTriangleBuilder.Build(apex1, apex2, apex3, border, fill);
-        }
+        else return NextBuilder.Build(apex1, apex2, apex3, border, fill);
     }
 }
