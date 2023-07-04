@@ -16,7 +16,7 @@ internal class RightTriangelBuider : TriangleBuilder
         double distance13 = apex1.Distance(apex3);
         double distance23 = apex2.Distance(apex3);
 
-        if (Math.Abs(distance12 * distance12 + distance13 * distance13 - distance23 * distance23) <= double.Epsilon)
+        if (Math.Abs(distance12 * distance12 + distance13 * distance13 - distance23 * distance23) <= double.Epsilon) //to RightTriangle
             return new RightTriangle(apex1, apex2, apex3, border, fill);
 
         else if (Math.Abs(distance12 * distance12 + distance23 * distance23 - distance13 * distance13) <= double.Epsilon)
@@ -25,6 +25,6 @@ internal class RightTriangelBuider : TriangleBuilder
         else if (Math.Abs(distance23 * distance23 + distance13 * distance13 - distance12 * distance12) <= double.Epsilon)
             return new RightTriangle(apex3, apex1, apex3, border, fill);
 
-        else return NextBuilder.Build(apex1, apex2, apex3, border, fill);
+        else return NextBuilder?.Build(apex1, apex2, apex3, border, fill);
     }
 }

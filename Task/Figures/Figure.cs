@@ -14,7 +14,6 @@ namespace Task.Figures
 
         public Figure()
         {
-            Area = 0;
             Name = string.Empty;
             FigureBorder = new Border(new Color("", 0), 0);
             FigureFill = new Fill(new Color("", 0), 0);

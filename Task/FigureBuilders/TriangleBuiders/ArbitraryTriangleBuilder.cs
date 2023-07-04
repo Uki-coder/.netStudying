@@ -5,9 +5,9 @@ using Task.FigureBuilders;
 
 internal class ArbitraryTriangleBuilder : TriangleBuilder
 {
-    public ArbitraryTriangleBuilder()
+    public ArbitraryTriangleBuilder(TriangleBuilder nextBuilder) : base(nextBuilder)
 	{
-        
+        NextBuilder = nextBuilder;
     }
 
     public override Triangle Build(Point apex1, Point apex2, Point apex3, Border border, Fill fill)

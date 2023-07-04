@@ -17,7 +17,6 @@ namespace Task.Figures.Triangle
             Name = "triangle";
             FigureFill = new Fill(new Color(string.Empty, 0), 0);
             FigureBorder = new Border(new Color(string.Empty, 0), 0);
-            Area = 0;
         }
 
         public override bool Equals(object? obj)
@@ -49,7 +48,7 @@ namespace Task.Figures.Triangle
 
         public override void MoveTo(Point destination)
         {
-            Apex3.Move(destination.XCoordinate, destination.YCoordinate);
+            Apex3.Move(destination.XCoordinate, destination.YCoordinate); //check
             Apex2.Move(destination.XCoordinate, destination.YCoordinate);
             Apex1.MoveTo(destination);
         }

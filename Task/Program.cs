@@ -59,11 +59,12 @@ int minimumID = areas.IndexOf(areas.Min());
 Console.WriteLine($"\n\nFigure with maximum area -- {maximumID} {figures[maximumID]}");
 Console.WriteLine($"Figure with minimum area -- {minimumID} {figures[minimumID]}");
 
-//builderTr0
-//builderTr1
-//builderTr2
-//builderTr3
-//builderTr4
-
 TriangleBuilder builder = new EqualiteralTriangleBuilder(new IscoscelesTriangleBuilder(
-    new RightTriangelBuider(new ArbitraryTriangleBuilder())));
+    new RightTriangelBuider(new ArbitraryTriangleBuilder(null))));
+
+//add scratchable
+//rename move
+//check TriangleBuilder
+
+//read about unit test
+//write unit test

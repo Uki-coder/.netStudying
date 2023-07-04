@@ -2,11 +2,19 @@
 
 namespace Task.Figures
 {
-    internal class Point : IMovable
+    /// <summary>
+    /// Class for reserving...
+    /// </summary>
+    public class Point : IMovable
     {
         public double XCoordinate { get; private set; }
         public double YCoordinate { get; private set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="xCoordinate"></param>
+        /// <param name="yCoordinate"></param>
         public Point(double xCoordinate, double yCoordinate)
         {
             XCoordinate = xCoordinate;
@@ -52,7 +60,7 @@ namespace Task.Figures
             YCoordinate = destination.YCoordinate;
         }
 
-        public void Move(double x, double y)
+        public void Move(double x, double y)//rename
         {
             XCoordinate += x;
             YCoordinate += y;

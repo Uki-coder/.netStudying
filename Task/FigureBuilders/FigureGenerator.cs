@@ -91,7 +91,7 @@ namespace Task.FigureBuilders
                 apex3 = GeneratePoint();
             }
 
-            return TriangleBuilder.Build(apex1, apex2, apex3, GenerateBorder(), GenerateFill());
+            return null;
         }
     }
 }
