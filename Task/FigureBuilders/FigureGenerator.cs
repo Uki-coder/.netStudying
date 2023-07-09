@@ -91,7 +91,10 @@ namespace Task.FigureBuilders
                 apex3 = GeneratePoint();
             }
 
-            return null;
+            TriangleBuilder builder = new EqualiteralTriangleBuilder(new IscoscelesTriangleBuilder(
+                new RightTriangelBuider(new ArbitraryTriangleBuilder(null))));
+
+            return builder.Build(apex1, apex2, apex3, GenerateBorder(), GenerateFill());
         }
     }
 }

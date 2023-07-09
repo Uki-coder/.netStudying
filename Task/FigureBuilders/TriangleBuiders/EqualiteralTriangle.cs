@@ -3,13 +3,29 @@ using Task.Figures.Triangle;
 using Task.Figures;
 using Task.FigureBuilders;
 
-internal class EqualiteralTriangleBuilder : TriangleBuilder
+/// <summary>
+/// Concrete builder of equaliteral triangle in triangle builder chain
+/// </summary>
+public class EqualiteralTriangleBuilder : TriangleBuilder
 {
+    /// <summary>
+    /// Creates equaliteral triangle builder
+    /// </summary>
+    /// <param name="nextBuilder">Given next triangle builder in chain</param>
     public EqualiteralTriangleBuilder(TriangleBuilder nextBuilder) : base(nextBuilder)
 	{
         NextBuilder = nextBuilder;
     }
 
+    /// <summary>
+    /// Returns equaliteral triangle based on given params 
+    /// </summary>
+    /// <param name="apex1">Gives first apex its position and properties</param>
+    /// <param name="apex2">Gives second apex its position and properties</param>
+    /// <param name="apex3">Gives third apex its position and properties</param>
+    /// <param name="border">Gives border its properties</param>
+    /// <param name="fill">Gives fill its properties</param>
+    /// <returns></returns>
     public override Triangle Build(Point apex1, Point apex2, Point apex3, Border border, Fill fill)
     {
         double distance12 = apex1.Distance(apex2);

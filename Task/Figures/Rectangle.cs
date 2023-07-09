@@ -2,13 +2,42 @@
 
 namespace Task.Figures
 {
-    internal class Rectangle : Figure
+    /// <summary>
+    /// Presents rectangle: its properties and position on the plain
+    /// 
+    /// Creaates rectangle only with its sides parallel to vertical and horizontal axes
+    /// </summary>
+    public class Rectangle : Figure
     {
+        /// <summary>
+        /// Presents left bottom point of rectangle: its position and properties
+        /// </summary>
         public Point LeftPoint { get; private set; }
+
+        /// <summary>
+        /// Presents left bottom point of rectangle: its position and properties
+        /// </summary>
         public Point RightPoint { get; private set; }
 
+        /// <summary>
+        /// Creates rectangle based on given params
+        /// </summary>
+        /// <param name="leftPoint">Gives to left bottom point of rectangle its positions and properties</param>
+        /// <param name="rightPoint">Gives to right bottom point of rectangle its positions and properties</param>
+        /// <param name="border">Gives border of rectangle its properties</param>
+        /// <param name="fill">Gives fill of rectangle its properties</param>
+        /// <exception cref="ArgumentException"></exception>
         public Rectangle(Point leftPoint, Point rightPoint, Border border, Fill fill)
         {
+            if (leftPoint.Equals(rightPoint))
+                throw new ArgumentException("Given points are the same point");
+
+            else if (Math.Abs(leftPoint.YCoordinate - rightPoint.YCoordinate) <= double.Epsilon)
+                throw new ArgumentException("Given points are placed on same vertical line");
+
+            else if (Math.Abs(leftPoint.XCoordinate - rightPoint.XCoordinate) <= double.Epsilon)
+                throw new ArgumentException("Given points are placed on same horizontal line");
+
             LeftPoint = leftPoint;
             RightPoint = rightPoint;
             Name = "rectangle";
@@ -16,6 +45,10 @@ namespace Task.Figures
             FigureFill = fill;
         }
 
+        /// <summary>
+        /// Creates rectangle based on given rectangle position and properties
+        /// </summary>
+        /// <param name="other">Given rectangle that gives properties and properties to created rectangle</param>
         public Rectangle(Rectangle other)
         {
             LeftPoint = other.LeftPoint;
@@ -48,16 +81,21 @@ namespace Task.Figures
                         + '\n';
         }
 
-        public override void Move(double x, double y)
+        public override void Shift(double x, double y)
         {
-            LeftPoint.Move(x, y);
-            RightPoint.Move(x, y);
+            LeftPoint.Shift(x, y);
+            RightPoint.Shift(x, y);
         }
 
+        /// <summary>
+        /// Moves left bottom point of rectangle to the destination point and whole rectangle relativelly to left bottom point
+        /// </summary>
+        /// <param name="destination">Destination of left bottom point of rectangle</param>
         public override void MoveTo(Point destination)
         {
-            RightPoint.Move(destination.XCoordinate, destination.YCoordinate);
+            RightPoint.Shift(destination.XCoordinate, destination.YCoordinate);
             LeftPoint.MoveTo(destination);
+
         }
 
         public override void MoveHorizontally(double x)
@@ -71,5 +109,21 @@ namespace Task.Figures
             RightPoint.MoveVertically(y);
             LeftPoint.MoveVertically(y);
         }
+
+        public override void Stretch(double multiplier)
+        {
+            if (multiplier <= double.Epsilon)
+            {
+                throw new ArgumentException("Multiplier is 0 or below", "multiplier");
+            }
+
+            RightPoint.MoveVertically(multiplier * (RightPoint.YCoordinate - LeftPoint.YCoordinate) -
+                    RightPoint.YCoordinate - LeftPoint.YCoordinate);
+
+            RightPoint.MoveHorizontally(multiplier * (RightPoint.XCoordinate - LeftPoint.XCoordinate) -
+                RightPoint.XCoordinate - LeftPoint.XCoordinate);
+        }
     }
 }
+
+// Should change class and base rectangle on 4 points instead of 2

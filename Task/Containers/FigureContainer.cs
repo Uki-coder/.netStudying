@@ -6,6 +6,7 @@ namespace Task.Containers;
 
 internal class FigureContainer : IMovable
 {
+    //ask about Container realization
     public List<Figure> FigureList { get; set; }
     
     public FigureContainer()
@@ -26,11 +27,11 @@ internal class FigureContainer : IMovable
         }
     }
 
-    public void Move(double x, double y)
+    public void Shift(double x, double y)
     {
         for (int i = 0; i < FigureList.Count; i++)
         {
-            FigureList[i].Move(x, y);
+            FigureList[i].Shift(x, y);
         }
     }
 
