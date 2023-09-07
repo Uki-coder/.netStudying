@@ -4,7 +4,6 @@ using Task.Figures.ColorProperties;
 namespace TaskTest.FiguresTests
 {
     [TestClass]
-    //ask about test comments
     public class RectangleTests
     {
         [TestMethod]

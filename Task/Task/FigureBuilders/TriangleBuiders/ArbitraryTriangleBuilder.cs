@@ -26,8 +26,8 @@ public class ArbitraryTriangleBuilder : TriangleBuilder
     /// <param name="border">Gives border its properties</param>
     /// <param name="fill">Gives fill its properties</param>
     /// <returns></returns>
-    public override Triangle Build(Point apex1, Point apex2, Point apex3, Border border, Fill fill)
+    public override Figure Build(List<Point> pointList, double radius, Fill fill, Border border)
     {
-        return new ArbitraryTriangle(apex1, apex2, apex3, border, fill);
+        return new ArbitraryTriangle(pointList[0], pointList[1], pointList[2], border, fill);
     }
 }

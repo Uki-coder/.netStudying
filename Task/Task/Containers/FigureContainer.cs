@@ -1,14 +1,19 @@
 ﻿using Task.Figures;
 using Task.Figures.ColorProperties;
 using Task.Interfaces;
+using Task.Figures.Triangle;
 
 namespace Task.Containers;
-
-internal class FigureContainer : IMovable
+/// <summary>
+/// Сontainer for figure objects including list of figures and able for IMovable interface
+/// </summary>
+public class FigureContainer : IMovable
 {
-    //ask about Container realization
-    public List<Figure> FigureList { get; set; }
-    
+    /// <summary>
+    /// List of figures
+    /// </summary>
+    public List<Figure> FigureList { get; private set; }
+
     public FigureContainer()
     {
         FigureList = new List<Figure>();
@@ -19,12 +24,14 @@ internal class FigureContainer : IMovable
         FigureList = new List<Figure>(amount);
     }
 
-    public void MoveTo(Point destination) // ask about realization
+    public void MoveTo(Point destination)
     {
-        for (int i = 0; i < FigureList.Count; i++) 
-        {
-            FigureList[i].MoveTo(destination);
-        }
+        for (int i = 1; i < FigureList.Count; i++)
+            FigureList[i].Shift(
+                destination.XCoordinate - FigureList[0].MainPoint.XCoordinate,
+                destination.YCoordinate - FigureList[0].MainPoint.YCoordinate);
+
+        FigureList[0].MoveTo(destination);
     }
 
     public void Shift(double x, double y)

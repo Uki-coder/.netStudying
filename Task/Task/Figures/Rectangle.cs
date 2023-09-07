@@ -43,6 +43,8 @@ namespace Task.Figures
             Name = "rectangle";
             FigureBorder = border;
             FigureFill = fill;
+
+            MainPoint = LeftPoint;
         }
 
         /// <summary>
@@ -56,6 +58,7 @@ namespace Task.Figures
             Name = other.Name;
             FigureFill = other.FigureFill;
             FigureBorder = other.FigureBorder;
+            MainPoint = other.MainPoint;
         }
 
         public override double GetArea()
@@ -85,6 +88,8 @@ namespace Task.Figures
         {
             LeftPoint.Shift(x, y);
             RightPoint.Shift(x, y);
+
+            MainPoint = LeftPoint;
         }
 
         /// <summary>
@@ -96,18 +101,24 @@ namespace Task.Figures
             RightPoint.Shift(destination.XCoordinate, destination.YCoordinate);
             LeftPoint.MoveTo(destination);
 
+            MainPoint = LeftPoint;
+
         }
 
         public override void MoveHorizontally(double x)
         {
             RightPoint.MoveHorizontally(x);
             LeftPoint.MoveHorizontally(x);
+
+            MainPoint = LeftPoint;
         }
 
         public override void MoveVertically(double y)
         {
             RightPoint.MoveVertically(y);
             LeftPoint.MoveVertically(y);
+
+            MainPoint = LeftPoint;
         }
 
         public override void Stretch(double multiplier)
@@ -122,8 +133,8 @@ namespace Task.Figures
 
             RightPoint.MoveHorizontally(multiplier * (RightPoint.XCoordinate - LeftPoint.XCoordinate) -
                 RightPoint.XCoordinate - LeftPoint.XCoordinate);
+
+            MainPoint = LeftPoint;
         }
     }
 }
-
-// Should change class and base rectangle on 4 points instead of 2

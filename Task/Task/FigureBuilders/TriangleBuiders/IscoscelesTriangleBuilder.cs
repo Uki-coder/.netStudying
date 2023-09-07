@@ -26,8 +26,12 @@ public class IscoscelesTriangleBuilder : TriangleBuilder
     /// <param name="border">Gives border its properties</param>
     /// <param name="fill">Gives fill its properties</param>
     /// <returns></returns>
-    public override Triangle Build(Point apex1, Point apex2, Point apex3, Border border, Fill fill)
+    public override Figure Build(List<Point> pointList, double radius, Fill fill, Border border)
     {
+        Point apex1 = pointList[0];
+        Point apex2 = pointList[1];
+        Point apex3 = pointList[2];
+
         double distance12 = apex1.Distance(apex2);
         double distance13 = apex1.Distance(apex3);
         double distance23 = apex2.Distance(apex3);
@@ -37,6 +41,6 @@ public class IscoscelesTriangleBuilder : TriangleBuilder
             (Math.Abs(distance13 - distance23) <= double.Epsilon))
             return new IscoscelesTriangle(apex2, apex1, apex3, border, fill);
 
-        else return NextBuilder.Build(apex1, apex2, apex3, border, fill);
+        else return NextBuilder?.Build(pointList, radius, fill, border);
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Runtime.Intrinsics.X86;
-using Task.Figures.ColorProperties;
+﻿using Task.Figures.ColorProperties;
 
 namespace Task.Figures.Triangle
 {
@@ -31,6 +30,7 @@ namespace Task.Figures.Triangle
             Apex1 = new Point();
             Apex2 = new Point();
             Apex3 = new Point();
+            MainPoint = Apex1;
 
             Name = "triangle";
             FigureFill = new Fill(new Color(string.Empty, 0), 0);
@@ -62,6 +62,8 @@ namespace Task.Figures.Triangle
             Apex1.Shift(x, y);
             Apex2.Shift(x, y);
             Apex3.Shift(x, y);
+
+            MainPoint = Apex1;
         }
 
         /// <summary>
@@ -73,6 +75,8 @@ namespace Task.Figures.Triangle
             Apex3.Shift(destination.XCoordinate, destination.YCoordinate);
             Apex2.Shift(destination.XCoordinate, destination.YCoordinate);
             Apex1.MoveTo(destination);
+
+            MainPoint = Apex1;
         }
 
         public override void MoveHorizontally(double x)
@@ -80,6 +84,8 @@ namespace Task.Figures.Triangle
             Apex1.MoveHorizontally(x);
             Apex2.MoveHorizontally(x);
             Apex3.MoveHorizontally(x);
+
+            MainPoint = Apex1;
         }
 
         public override void MoveVertically(double y)
@@ -87,6 +93,8 @@ namespace Task.Figures.Triangle
             Apex1.MoveVertically(y);
             Apex2.MoveVertically(y);
             Apex3.MoveVertically(y);
+
+            MainPoint = Apex1;
         }
 
         /// <summary>
@@ -113,6 +121,7 @@ namespace Task.Figures.Triangle
                 apex2.MoveHorizontally((apex1.YCoordinate - apex2.YCoordinate)
                     - multiplier * (apex1.YCoordinate - apex2.YCoordinate));
             //ask abput apex1.XYCoordinate == apex2.XYCoordinate
+
         }
 
         public override void Stretch(double multiplier)
@@ -124,6 +133,8 @@ namespace Task.Figures.Triangle
 
             StretchMoveApex(Apex1, Apex2, multiplier);
             StretchMoveApex(Apex1, Apex3, multiplier);
+
+            MainPoint = Apex1;
         }
     }
 }

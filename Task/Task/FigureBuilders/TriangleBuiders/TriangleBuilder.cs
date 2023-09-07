@@ -1,14 +1,14 @@
 ﻿using Task.Figures.ColorProperties;
-using Task.Figures.Triangle;
 using Task.Figures;
 
+//ask about removing
 namespace Task.FigureBuilders
 {
 
     /// <summary>
     /// Abstract builder of triangles
     /// </summary>
-    public abstract class TriangleBuilder
+    public abstract class TriangleBuilder : FigureBuilder
     {
         /// <summary>
         /// Next builder in triangle builder chain
@@ -19,7 +19,7 @@ namespace Task.FigureBuilders
         /// Creates abstract triangle builder
         /// </summary>
         /// <param name="nextBuilder">Given next triangle builder in chain</param>
-        public TriangleBuilder(TriangleBuilder nextBuilder)
+        public TriangleBuilder(TriangleBuilder nextBuilder) : base(nextBuilder)
         {
             NextBuilder = nextBuilder;
         }
@@ -33,6 +33,6 @@ namespace Task.FigureBuilders
         /// <param name="border">Gives border its properties</param>
         /// <param name="fill">Gives fill its properties</param>
         /// <returns></returns>
-        public abstract Triangle Build(Point apex1, Point apex2, Point apex3, Border border, Fill fill);
+        public abstract override Figure Build(List<Point> pointList, double radius, Fill fill, Border border);
     }
 }

@@ -29,6 +29,11 @@ namespace Task.Figures
         public Fill FigureFill { get; protected set; }
 
         /// <summary>
+        /// Copy of main point of figure (LeftPoint for Rectangle, Center for Circle, Apex1 for Triangle)
+        /// </summary>
+        public Point MainPoint { get; protected set; }
+
+        /// <summary>
         /// Creates abstract empty figure
         /// </summary>
         public Figure()
@@ -36,6 +41,7 @@ namespace Task.Figures
             Name = string.Empty;
             FigureBorder = new Border(new Color("", 0), 0);
             FigureFill = new Fill(new Color("", 0), 0);
+            MainPoint = new Point(0, 0);
         }
 
         /// <summary>

@@ -3,7 +3,6 @@ using Task.Figures;
 namespace TaskTest.FiguresTests
 {
     [TestClass]
-    //ask about test comments
     public class PointTests
     {
         [TestMethod]

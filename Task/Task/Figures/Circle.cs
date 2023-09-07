@@ -31,6 +31,7 @@ namespace Task.Figures
             Name = other.Name;
             FigureBorder = other.FigureBorder;
             FigureFill = other.FigureFill;
+            MainPoint = other.MainPoint;
         }
 
         /// <summary>
@@ -47,6 +48,8 @@ namespace Task.Figures
             Name = "circle";
             FigureBorder = border;
             FigureFill = fill;
+
+            MainPoint = Center;
         }
 
         /// <summary>
@@ -63,6 +66,8 @@ namespace Task.Figures
             Name = "circle";
             FigureBorder = border;
             FigureFill = fill;
+
+            MainPoint = Center;
         }
 
         public override double GetArea()
@@ -89,6 +94,7 @@ namespace Task.Figures
         public override void Shift(double x, double y)
         {
             Center.Shift(x, y);
+            MainPoint = Center;
         }
 
         /// <summary>
@@ -98,16 +104,19 @@ namespace Task.Figures
         public override void MoveTo(Point destination)
         {
             Center.MoveTo(destination);
+            MainPoint = Center;
         }
 
         public override void MoveVertically(double y)
         {
             Center.MoveVertically(y);
+            MainPoint = Center;
         }
 
         public override void MoveHorizontally(double x)
         {
             Center.MoveHorizontally(x);
+            MainPoint = Center;
         }
 
         /// <summary>
